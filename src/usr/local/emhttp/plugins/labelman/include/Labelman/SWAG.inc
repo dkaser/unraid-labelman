@@ -28,8 +28,8 @@ if ( ! isset($this)) {
     <dt>Enabled</dt>
     <dd>
         <select name='swag' size='1'>
-            <?= Utils::make_option($this->swag, 'enable', "Yes");?>
-            <?= Utils::make_option( !$this->swag, '', "No");?>
+            <?= Utils::make_option($this->enable, 'enable', "Yes");?>
+            <?= Utils::make_option( ! $this->enable, '', "No");?>
         </select>
     </dd>
 </dl>
@@ -37,10 +37,10 @@ if ( ! isset($this)) {
     <dl>
         <dt>Container Name or IP Address</dt>
         <dd>
-            <input type="text" name="swag_address" class="narrow" min="0" max="65535" value="<?= $this->swag_address; ?>" placeholder="<?=$this?>">
+            <input type="text" name="swag_address" class="narrow" min="0" max="65535" value="<?= $this->swag_address; ?>" placeholder="">
         </dd>
     </dl>
-    <blockquote class='inline_help'>optional - overrides upstream app address. Can be set to an IP or a DNS hostname. Defaults to container name.</blockquote>
+    <blockquote class='inline_help'>Overrides upstream app address. Can be set to an IP or a DNS hostname. Defaults to container name.</blockquote>
 
     <dl>
         <dt>Container Port</dt>
@@ -48,7 +48,7 @@ if ( ! isset($this)) {
             <input type="number" name="swag_port" class="narrow" min="0" max="65535" value="<?= $this->swag_port; ?>" placeholder="0">
         </dd>
     </dl>
-    <blockquote class='inline_help'>The port on the container to proxy. Leave at default (0) to autodetect the correct port. This is usually only needed when a container publishes multiple ports.</blockquote>
+    <blockquote class='inline_help'>Overrides internal exposed port (by default, auto-proxy will use first detected exposed port)</blockquote>
 
     <dl>
         <dt>Scheme</dt>
@@ -59,27 +59,27 @@ if ( ! isset($this)) {
             </select>
         </dd>
     </dl>
-    <blockquote class='inline_help'>- optional - overrides internal proto (defaults to http)</blockquote>
+    <blockquote class='inline_help'>Overrides internal protocol (defaults to HTTP)</blockquote>
 
     <dl>
         <dt>URL</dt>
         <dd>
-            <input type="text" name="swag_url" class="narrow" min="0" max="65535" value="<?= $this->swag_url; ?>" placeholder="<?=$this . '.domain.com'?>">
+            <input type="text" name="swag_url" class="narrow" min="0" max="65535" value="<?= $this->swag_url; ?>" placeholder="">
         </dd>
     </dl>
-    <blockquote class='inline_help'>optional - overrides server_name (defaults to containername.*)</blockquote>
+    <blockquote class='inline_help'>Overrides server_name (defaults to containername.*)</blockquote>
 
     <dl>
         <dt>swag_auth</dt>
         <dd>
             <select name='swag_auth' size='1'>
-                <?= Utils::make_option(  $this->swag_auth == "", '', "None");?>
-                <?= Utils::make_option($this->swag_auth == "authelia", 'authelia', "authelia");?>
-                <?= Utils::make_option(  $this->swag_auth == "ldap", 'ldap', "ldap");?>
-                <?= Utils::make_option(  $this->swag_auth == "http", 'http', "http");?>
+                <?= Utils::make_option($this->swag_auth == "", '', "None");?>
+                <?= Utils::make_option($this->swag_auth == "authelia", 'authelia', "Authelia");?>
+                <?= Utils::make_option($this->swag_auth == "ldap", 'ldap', "LDAP");?>
+                <?= Utils::make_option($this->swag_auth == "http", 'http', "HTTP");?>
 
             </select>
         </dd>
     </dl>
-    <blockquote class='inline_help'>optional - enables auth methods (options are authelia, ldap and http for basic http auth)</blockquote>
+    <blockquote class='inline_help'>Enables auth methods (options are Authelia, LDAP and HTTP for basic HTTP authentication)</blockquote>
 </div>

@@ -19,23 +19,21 @@ namespace Labelman;
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-class swag implements Service
+class SWAG implements Service
 {
-    public bool $enable = false;
-    public bool $swag = false;
+    public bool $enable         = false;
     public string $swag_address = "";
-    public int $swag_port = 0;
-    public string $swag_proto = "http";
-    public string $swag_url = "";
-    public string $swag_auth = "";
+    public int $swag_port       = 0;
+    public string $swag_proto   = "http";
+    public string $swag_url     = "";
+    public string $swag_auth    = "";
 
     public function __construct(Container $container)
-
     {
         $labels = $container->getLabels();
 
         if (($labels['swag'] ?? null) == "enable") {
-            $this->swag = true;
+            $this->enable = true;
         }
         if (isset($labels['swag_address'])) {
             $this->swag_address = $labels['swag_address'];
@@ -56,15 +54,15 @@ class swag implements Service
 
     public static function serviceExists(SystemInfo $info): bool
     {
-        $tsdFound = false;
+        $serviceFound = false;
         foreach ($info->Images as $image) {
             if (str_contains(strtolower($image), "linuxserver/swag")) {
-                $tsdFound = true;
+                $serviceFound = true;
                 break;
             }
         }
 
-        return $tsdFound;
+        return $serviceFound;
     }
 
     public static function getDisplayName(): string
@@ -74,34 +72,36 @@ class swag implements Service
 
     public function display(Container $container): void
     {
-        include __DIR__ . "/Swag.inc";
+        include __DIR__ . "/SWAG.inc";
     }
 
-    /**
-     * @param array<string,string> $post
-     */
     public function update(\SimpleXMLElement &$config, array $post): void
     {
-        if ($this->swag !== (($post['swag'] ?? "false") === "enable")) {
-        Utils::apply_label($config, 'swag.swag', $post['swag'] ?? "false", "false");
+        if ($this->enable !== (($post['swag']) === "enable")) {
+            Utils::apply_label($config, 'swag', $post['swag'] ?? "", "");
+        }
+
+        if ($this->swag_address !== ($post['swag_address'])) {
+            Utils::apply_label($config, 'swag_address', $post['swag_address'] ?? "");
+        }
+
+        if ($this->swag_port !== intval($post['swag_port'])) {
+            Utils::apply_label($config, 'swag_port', $post['swag_port'] ?: "0", "0");
+        }
+
+        if ($this->swag_url !== ($post['swag_url'])) {
+            Utils::apply_label($config, 'swag_url', $post['swag_url'] ?? "", "");
+        }
+
+        if ($this->swag_auth !== ($post['swag_auth'])) {
+            Utils::apply_label($config, 'swag_auth', $post['swag_auth'] ?? "", "");
+        }
+
+        if ($this->swag_proto !== ($post['swag_proto'])) {
+            Utils::apply_label($config, 'swag_proto', $post['swag_proto'] ?? "http", "http");
+        }
     }
 
-        if ($this->swag_address !== ($post['swag_address'] ?? "")) {
-            Utils::apply_label($config, 'swag.swag_address', $post['swag_address'] ?? "");
-        }
-
-        if ($this->swag_port !== intval($post['swag_port'] ?? "0")) {
-            Utils::apply_label($config, 'swag.swag_port', $post['swag_port'] ?? "0", "0");
-        }
-
-        if ($this->swag_url !== ($post['swag_url'] ?? "")) {
-            Utils::apply_label($config, 'swag.swag_url', $post['swag_url'] ?? "", "");
-        }
-
-        if ($this->swag_auth !== ($post['swag_auth'] ?? "")) {
-            Utils::apply_label($config, 'swag.swag_auth', $post['swag_auth'] ?? "", "");
-        }
-    }
     public function isEnabled(): bool
     {
         return $this->enable;
