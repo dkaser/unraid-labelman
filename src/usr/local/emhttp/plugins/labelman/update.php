@@ -22,7 +22,9 @@ namespace Labelman;
 $docroot = $docroot ?? $_SERVER['DOCUMENT_ROOT'] ?: '/usr/local/emhttp';
 require_once "{$docroot}/plugins/labelman/include/common.php";
 
+ob_implicit_flush(true);
 readfile('/usr/local/emhttp/update.htm');
+ob_implicit_flush(false);
 
 if ( ! isset($_POST['containerName'])) {
     throw new \Exception("No container specified");
