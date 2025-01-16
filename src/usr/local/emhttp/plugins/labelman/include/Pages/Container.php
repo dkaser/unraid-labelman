@@ -47,6 +47,7 @@ $sysInfo   = new SystemInfo();
 
 $services = Utils::getServices();
 foreach ($services as $service) {
+    ob_start();
     try {
         if ($service::serviceExists($sysInfo)) {
             echo "<div class='title'><span class='left'>{$service::getDisplayName()}</span></div>";
@@ -54,7 +55,9 @@ foreach ($services as $service) {
         }
     } catch (\Throwable $e) {
         Utils::logmsg("Error displaying {$service}: {$e->getMessage()}");
+        ob_clean();
     }
+    ob_end_flush();
 }
 ?>
 
