@@ -34,7 +34,7 @@ class swag implements Service
     {
         $labels = $container->getLabels();
 
-        if (($labels['swag'] ?? null) == "true") {
+        if (($labels['swag'] ?? null) == "enable") {
             $this->swag = true;
         }
         if (isset($labels['swag_address'])) {
@@ -58,7 +58,7 @@ class swag implements Service
     {
         $tsdFound = false;
         foreach ($info->Images as $image) {
-            if (str_contains(strtolower($image), "swag")) {
+            if (str_contains(strtolower($image), "linuxserver/swag")) {
                 $tsdFound = true;
                 break;
             }
@@ -69,12 +69,12 @@ class swag implements Service
 
     public static function getDisplayName(): string
     {
-        return "Swag";
+        return "swag";
     }
 
     public function display(Container $container): void
     {
-        include __DIR__ . "/swag.php";
+        include __DIR__ . "/Swag.inc";
     }
 
     /**
@@ -82,7 +82,7 @@ class swag implements Service
      */
     public function update(\SimpleXMLElement &$config, array $post): void
     {
-        if ($this->swag !== (($post['swag'] ?? "false") === "true")) {
+        if ($this->swag !== (($post['swag'] ?? "false") === "enable")) {
         Utils::apply_label($config, 'swag.swag', $post['swag'] ?? "false", "false");
     }
 

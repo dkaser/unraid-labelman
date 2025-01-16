@@ -29,13 +29,13 @@ if ( ! isset($this)) {
     <dd>
         <select name='swag' size='1'>
             <?= Utils::make_option($this->swag, 'enable', "Yes");?>
-            <?= Utils::make_option( !$this->swag, 'false', "No");?>
+            <?= Utils::make_option( !$this->swag, '', "No");?>
         </select>
     </dd>
 </dl>
 <div class="advanced">
     <dl>
-        <dt>Container Name</dt>
+        <dt>Container Name or IP Address</dt>
         <dd>
             <input type="text" name="swag_address" class="narrow" min="0" max="65535" value="<?= $this->swag_address; ?>" placeholder="<?=$this?>">
         </dd>
@@ -73,10 +73,10 @@ if ( ! isset($this)) {
         <dt>swag_auth</dt>
         <dd>
             <select name='swag_auth' size='1'>
-                <?= Utils::make_option( ! $this->swag_auth, '', "None");?>
-                <?= Utils::make_option($this->swag_auth, 'authelia', "authelia");?>
-                <?= Utils::make_option( ! $this->swag_auth, 'ldap', "ldap");?>
-                <?= Utils::make_option( ! $this->swag_auth, 'http', "http");?>
+                <?= Utils::make_option(  $this->swag_auth == "", '', "None");?>
+                <?= Utils::make_option($this->swag_auth == "authelia", 'authelia', "authelia");?>
+                <?= Utils::make_option(  $this->swag_auth == "ldap", 'ldap', "ldap");?>
+                <?= Utils::make_option(  $this->swag_auth == "http", 'http', "http");?>
 
             </select>
         </dd>
