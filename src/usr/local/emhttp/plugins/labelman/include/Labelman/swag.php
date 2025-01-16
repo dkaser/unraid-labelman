@@ -69,7 +69,7 @@ class swag implements Service
 
     public static function getDisplayName(): string
     {
-        return "swag";
+        return "SWAG";
     }
 
     public function display(Container $container): void
