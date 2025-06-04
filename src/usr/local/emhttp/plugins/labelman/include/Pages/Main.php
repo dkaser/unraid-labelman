@@ -2,6 +2,8 @@
 
 namespace EDACerton\Labelman;
 
+use EDACerton\PluginUtils\Translator;
+
 /*
     Copyright (C) 2025  Derek Kaser
 
@@ -25,6 +27,7 @@ require_once "{$docroot}/plugins/labelman/include/common.php";
 if ( ! defined(__NAMESPACE__ . '\PLUGIN_ROOT') || ! defined(__NAMESPACE__ . '\PLUGIN_NAME')) {
     throw new \RuntimeException("Common file not loaded.");
 }
+$tr    = $tr ?? new Translator(PLUGIN_ROOT);
 $utils = new Utils(PLUGIN_NAME);
 
 $sysInfo = new SystemInfo();
@@ -50,12 +53,12 @@ foreach ($services as $k => $service) {
 <table id='statusTable' class="unraid statusTable tablesorter">
     <thead>
         <tr>
-            <th>Container</th>
+            <th><?= $tr->tr("container"); ?></th>
             <?php
                 foreach ($services as $k => $service) {
                     try {
                         if ($serviceEnabled[$service]) {
-                            echo("<th class='filter-select filter-match'>{$service::getDisplayName()} Enabled</th>");
+                            echo("<th class='filter-select filter-match'>{$service::getDisplayName()} " . $tr->tr("enabled") . "</th>");
                         }
                     } catch (\Throwable $e) {
                         unset($services[$k]);
@@ -63,7 +66,7 @@ foreach ($services as $k => $service) {
                     }
                 }
 ?>
-            <th class="filter-false">Actions</th>
+            <th class="filter-false"><?= $tr->tr("actions"); ?></th>
         </tr>
     </thead>
     <tbody>
@@ -81,7 +84,7 @@ foreach ($services as $k => $service) {
                 foreach ($services as $service) {
                     try {
                         if ($serviceEnabled[$service]) {
-                            $row .= "<td>" . ($container->Services[$service]->isEnabled() ? "Yes" : "No") . "</td>";
+                            $row .= "<td>" . ($container->Services[$service]->isEnabled() ? $tr->tr("yes") : $tr->tr("no")) . "</td>";
                         }
                     } catch (\Throwable $e) {
                         $utils->logmsg("Error checking if {$service} enabled: {$e->getMessage()}");
@@ -89,14 +92,14 @@ foreach ($services as $k => $service) {
                     }
                 }
 
-                $row .= "<td><a href='/Settings/Labelman?container={$containerURL}'>Edit</a></td></tr>";
+                $row .= "<td><a href='/Settings/Labelman?container={$containerURL}'>" . $tr->tr("edit") . "</a></td></tr>";
 
                 echo($row);
             }
 ?>
     </tbody>
 </table>
-<button type="button" class="reset">Reset Filters</button>
+<button type="button" class="reset"><?= $tr->tr("reset_filters"); ?></button>
 
 <script>
 $(function() {

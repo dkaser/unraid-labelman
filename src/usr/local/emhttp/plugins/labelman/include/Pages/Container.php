@@ -2,6 +2,8 @@
 
 namespace EDACerton\Labelman;
 
+use EDACerton\PluginUtils\Translator;
+
 /*
     Copyright (C) 2025  Derek Kaser
 
@@ -25,6 +27,7 @@ require_once "{$docroot}/plugins/labelman/include/common.php";
 if ( ! defined(__NAMESPACE__ . '\PLUGIN_ROOT') || ! defined(__NAMESPACE__ . '\PLUGIN_NAME')) {
     throw new \RuntimeException("Common file not loaded.");
 }
+$tr    = $tr ?? new Translator(PLUGIN_ROOT);
 $utils = new Utils(PLUGIN_NAME);
 
 if ( ! isset($_GET['container'])) {
@@ -69,12 +72,12 @@ foreach ($services as $service) {
 }
 ?>
 
-<div class='title'><span class='left'>Save Settings</span></div>
+<div class='title'><span class='left'><?= $tr->tr("save_settings"); ?></span></div>
 
 <dl>
     <dt>&nbsp;</dt>
     <dd>
-        <input type="submit" name="#apply" value="Apply"><input type="button" id="DONE" value="Back" onclick="window.location.href='/Settings/Labelman'">
+        <input type="submit" name="#apply" value="<?= $tr->tr("apply"); ?>"><input type="button" id="DONE" value="<?= $tr->tr("back"); ?>" onclick="window.location.href='/Settings/Labelman'">
     </dd>
 </dl>
 </form>

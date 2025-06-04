@@ -2,6 +2,8 @@
 
 namespace EDACerton\Labelman;
 
+use EDACerton\PluginUtils\Translator;
+
 /*
     Copyright (C) 2025  Derek Kaser
 
@@ -22,20 +24,26 @@ namespace EDACerton\Labelman;
 if ( ! isset($this)) {
     throw new \Exception("TSDProxy.inc called outside class");
 }
+
+if ( ! defined(__NAMESPACE__ . '\PLUGIN_ROOT') || ! defined(__NAMESPACE__ . '\PLUGIN_NAME')) {
+    throw new \RuntimeException("Common file not loaded.");
+}
+
+$tr = $tr ?? new Translator(PLUGIN_ROOT);
 ?>
 
 <dl>
-  <dt>Enabled</dt>
+  <dt><?= $tr->tr("enabled"); ?></dt>
   <dd>
     <select name="TSDProxy_enable" size="1">
-      <?= Utils::make_option($this->enable, 'true', "Yes");?>
-      <?= Utils::make_option( ! $this->enable, 'false', "No");?>
+      <?= Utils::make_option($this->enable, 'true', $tr->tr("yes"));?>
+      <?= Utils::make_option( ! $this->enable, 'false', $tr->tr("no"));?>
     </select>
   </dd>
 </dl>
 <div class="advanced">
   <dl>
-    <dt>Name</dt>
+    <dt><?= $tr->tr("name"); ?></dt>
     <dd>
       <input
         type="text"
@@ -49,12 +57,11 @@ if ( ! isset($this)) {
     </dd>
   </dl>
   <blockquote class="inline_help">
-    The name to use for the new Tailscale machine. If left blank, the container
-    name is used.
+    <?= $tr->tr("tsdproxy.help.name"); ?>
   </blockquote>
 
   <dl>
-    <dt>Container Port</dt>
+    <dt><?= $tr->tr("container_port"); ?></dt>
     <dd>
       <input
         type="number"
@@ -68,40 +75,37 @@ if ( ! isset($this)) {
     </dd>
   </dl>
   <blockquote class="inline_help">
-    The port on the container to proxy. Leave at default (0) to autodetect the
-    correct port. This is usually only needed when a container publishes
-    multiple ports.
+    <?= $tr->tr("tsdproxy.help.port"); ?>
   </blockquote>
 
   <dl>
-    <dt>Ephemeral</dt>
+    <dt><?= $tr->tr("tsdproxy.ephemeral"); ?></dt>
     <dd>
       <select name="TSDProxy_ephemeral" size="1">
-        <?= Utils::make_option($this->ephemeral, 'true', "Yes");?>
-        <?= Utils::make_option( ! $this->ephemeral, 'false', "No");?>
+        <?= Utils::make_option($this->ephemeral, 'true', $tr->tr("yes"));?>
+        <?= Utils::make_option( ! $this->ephemeral, 'false', $tr->tr("no"));?>
       </select>
     </dd>
   </dl>
   <blockquote class="inline_help">
-    Make the Tailscale node ephemeral. Should usually be false, only change if
-    you know what you are doing.
+    <?= $tr->tr("tsdproxy.help.ephemeral"); ?>
   </blockquote>
 
   <dl>
-    <dt>Funnel</dt>
+    <dt><?= $tr->tr("tsdproxy.funnel"); ?></dt>
     <dd>
       <select name="TSDProxy_funnel" size="1">
-        <?= Utils::make_option($this->funnel, 'true', "Yes");?>
-        <?= Utils::make_option( ! $this->funnel, 'false', "No");?>
+        <?= Utils::make_option($this->funnel, 'true', $tr->tr("yes"));?>
+        <?= Utils::make_option( ! $this->funnel, 'false', $tr->tr("no"));?>
       </select>
     </dd>
   </dl>
   <blockquote class="inline_help">
-    Allow connections from the internet to the published service.
+    <?= $tr->tr("tsdproxy.help.funnel"); ?>
   </blockquote>
 
   <dl>
-    <dt>Scheme</dt>
+    <dt><?= $tr->tr("tsdproxy.scheme"); ?></dt>
     <dd>
       <select name="TSDProxy_scheme" size="1">
         <?= Utils::make_option($this->scheme == "http", 'http', "HTTP");?>
@@ -110,19 +114,19 @@ if ( ! isset($this)) {
     </dd>
   </dl>
   <blockquote class="inline_help">
-    Switch to HTTPS for containers that publish HTTPS endpoints instead of HTTP.
+    <?= $tr->tr("tsdproxy.help.scheme"); ?>
   </blockquote>
 
   <dl>
-    <dt>TLS Validate</dt>
+    <dt><?= $tr->tr("tsdproxy.tls_validate"); ?></dt>
     <dd>
       <select name="TSDProxy_tlsvalidate" size="1">
-        <?= Utils::make_option($this->tlsvalidate, 'true', "Yes");?>
-        <?= Utils::make_option( ! $this->tlsvalidate, 'false', "No");?>
+        <?= Utils::make_option($this->tlsvalidate, 'true', $tr->tr("yes"));?>
+        <?= Utils::make_option( ! $this->tlsvalidate, 'false', $tr->tr("no"));?>
       </select>
     </dd>
   </dl>
   <blockquote class="inline_help">
-    Validate TLS certificate. Only applicable when scheme is set to HTTPS.
+    <?= $tr->tr("tsdproxy.help.tls_validate"); ?>
   </blockquote>
 </div>

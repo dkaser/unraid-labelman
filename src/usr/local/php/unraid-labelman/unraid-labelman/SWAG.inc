@@ -2,6 +2,8 @@
 
 namespace EDACerton\Labelman;
 
+use EDACerton\PluginUtils\Translator;
+
 /*
     Copyright (C) 2025  Derek Kaser
 
@@ -22,36 +24,46 @@ namespace EDACerton\Labelman;
 if ( ! isset($this)) {
     throw new \Exception("swag.inc called outside class");
 }
+
+if ( ! defined(__NAMESPACE__ . '\PLUGIN_ROOT') || ! defined(__NAMESPACE__ . '\PLUGIN_NAME')) {
+    throw new \RuntimeException("Common file not loaded.");
+}
+
+$tr = $tr ?? new Translator(PLUGIN_ROOT);
 ?>
 
 <dl>
-    <dt>Enabled</dt>
+    <dt><?= $tr->tr("enabled"); ?></dt>
     <dd>
         <select name='swag' size='1'>
-            <?= Utils::make_option($this->enable, 'enable', "Yes");?>
-            <?= Utils::make_option( ! $this->enable, '', "No");?>
+            <?= Utils::make_option($this->enable, 'enable', $tr->tr("yes"));?>
+            <?= Utils::make_option( ! $this->enable, '', $tr->tr("no"));?>
         </select>
     </dd>
 </dl>
 <div class="advanced">
     <dl>
-        <dt>Container Name or IP Address</dt>
+        <dt><?= $tr->tr("swag.name_ip"); ?></dt>
         <dd>
             <input type="text" name="swag_address" class="narrow" min="0" max="65535" value="<?= $this->swag_address; ?>" placeholder="">
         </dd>
     </dl>
-    <blockquote class='inline_help'>Overrides upstream app address. Can be set to an IP or a DNS hostname. Defaults to container name.</blockquote>
+    <blockquote class='inline_help'>
+        <?= $tr->tr("swag.help.name_ip"); ?>
+    </blockquote>
 
     <dl>
-        <dt>Container Port</dt>
+        <dt><?= $tr->tr("container_port"); ?></dt>
         <dd>
             <input type="number" name="swag_port" class="narrow" min="0" max="65535" value="<?= $this->swag_port; ?>" placeholder="0">
         </dd>
     </dl>
-    <blockquote class='inline_help'>Overrides internal exposed port (by default, auto-proxy will use first detected exposed port)</blockquote>
+    <blockquote class='inline_help'>
+        <?= $tr->tr("swag.help.port"); ?>
+    </blockquote>
 
     <dl>
-        <dt>Scheme</dt>
+        <dt><?= $tr->tr("swag.scheme"); ?></dt>
         <dd>
             <select name='swag_proto' size='1'>
                 <?= Utils::make_option($this->swag_proto == "http", 'http', "HTTP");?>
@@ -59,27 +71,32 @@ if ( ! isset($this)) {
             </select>
         </dd>
     </dl>
-    <blockquote class='inline_help'>Overrides internal protocol (defaults to HTTP)</blockquote>
+    <blockquote class='inline_help'>
+        <?= $tr->tr("swag.help.scheme"); ?>
+    </blockquote>
 
     <dl>
-        <dt>URL</dt>
+        <dt><?= $tr->tr("swag.url"); ?></dt>
         <dd>
             <input type="text" name="swag_url" class="narrow" min="0" max="65535" value="<?= $this->swag_url; ?>" placeholder="">
         </dd>
     </dl>
-    <blockquote class='inline_help'>Overrides server_name (defaults to containername.*)</blockquote>
+    <blockquote class='inline_help'>
+        <?= $tr->tr("swag.help.url"); ?>
+    </blockquote>
 
     <dl>
-        <dt>swag_auth</dt>
+        <dt><?= $tr->tr("swag.authentication"); ?></dt>
         <dd>
             <select name='swag_auth' size='1'>
                 <?= Utils::make_option($this->swag_auth == "", '', "None");?>
                 <?= Utils::make_option($this->swag_auth == "authelia", 'authelia', "Authelia");?>
                 <?= Utils::make_option($this->swag_auth == "ldap", 'ldap', "LDAP");?>
                 <?= Utils::make_option($this->swag_auth == "http", 'http', "HTTP");?>
-
             </select>
         </dd>
     </dl>
-    <blockquote class='inline_help'>Enables auth methods (options are Authelia, LDAP and HTTP for basic HTTP authentication)</blockquote>
+    <blockquote class='inline_help'>
+        <?= $tr->tr("swag.help.authentication"); ?>
+    </blockquote>
 </div>

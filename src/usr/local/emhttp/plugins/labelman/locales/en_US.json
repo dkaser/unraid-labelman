@@ -1,0 +1,41 @@
+{
+    "container": "Container",
+    "enabled": "Enabled",
+    "yes": "Yes",
+    "no": "No",
+    "edit": "Edit",
+    "actions": "Actions",
+    "reset_filters": "Reset Filters",
+    "save_settings": "Save Settings",
+    "apply": "Apply",
+    "back": "Back",
+    "name": "Name",
+    "container_port": "Container Port",
+    "tsdproxy": {
+        "ephemeral": "Ephemeral",
+        "funnel": "Funnel",
+        "scheme": "Scheme",
+        "tls_validate": "TLS Validate",
+        "help": {
+            "name": "The name to use for the new Tailscale machine. If left blank, the container name is used.",
+            "port": "The port on the container to proxy. Leave at default (0) to autodetect the correct port. This is usually only needed when a container publishes multiple ports.",
+            "ephemeral": "Make the Tailscale node ephemeral. Should usually be false, only change if you know what you are doing.",
+            "funnel": "Allow connections from the internet to the published service.",
+            "scheme": "Switch to HTTPS for containers that publish HTTPS endpoints instead of HTTP.",
+            "tls_validate": "Validate TLS certificate. Only applicable when scheme is set to HTTPS."
+        }
+    },
+    "swag": {
+        "name_ip": "Container Name or IP Address",
+        "scheme": "Scheme",
+        "url": "URL",
+        "authentication": "Authentication",
+        "help": {
+            "name_ip": "Overrides upstream app address. Can be set to an IP or a DNS hostname. Defaults to container name.",
+            "port": "Overrides internal exposed port (by default, auto-proxy will use first detected exposed port)",
+            "scheme": "Overrides internal protocol (defaults to HTTP)",
+            "url": "Overrides server_name (defaults to containername.*)",
+            "authentication": "Enables auth methods (options are Authelia, LDAP and HTTP for basic HTTP authentication)"
+        }
+    }
+}
