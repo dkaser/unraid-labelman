@@ -1,0 +1,41 @@
+{
+    "container": "Container",
+    "enabled": "Aktiviert",
+    "yes": "Ja",
+    "no": "Nein",
+    "edit": "Bearbeiten",
+    "actions": "Aktionen",
+    "reset_filters": "Filter zurücksetzen",
+    "save_settings": "Einstellungen speichern",
+    "apply": "Übernehmen",
+    "back": "Zurück",
+    "name": "Name",
+    "container_port": "Container-Port",
+    "tsdproxy": {
+        "ephemeral": "Flüchtig",
+        "funnel": "Trichter",
+        "scheme": "Schema",
+        "tls_validate": "TLS validieren",
+        "help": {
+            "name": "Der zu verwendende Name für die neue Tailscale-Maschine. Wenn leer gelassen, wird der Containername verwendet.",
+            "port": "Der Port am Container, auf den weitergeleitet werden soll. Lassen Sie den Standardwert (0), um den richtigen Port automatisch zu erkennen. Dies ist in der Regel nur erforderlich, wenn von einem Container mehrere Ports veröffentlicht werden.",
+            "ephemeral": "Machen Sie den Tailscale-Knoten flüchtig. Sollte normalerweise auf \"false\" stehen, nur ändern, wenn Sie wissen, was Sie tun.",
+            "funnel": "Erlauben Sie Verbindungen aus dem Internet zum veröffentlichten Dienst.",
+            "scheme": "Zu HTTPS wechseln für Container, die HTTPS-Endpunkte statt HTTP veröffentlichen.",
+            "tls_validate": "TLS-Zertifikat validieren. Nur anwendbar, wenn das Schema auf HTTPS gesetzt ist."
+        }
+    },
+    "swag": {
+        "name_ip": "Containername oder IP-Adresse",
+        "scheme": "Schema",
+        "url": "URL",
+        "authentication": "Authentifizierung",
+        "help": {
+            "name_ip": "Überschreibt die Upstream-App-Adresse. Kann auf eine IP oder einen DNS-Hostnamen gesetzt werden. Standardmäßig wird der Containername verwendet.",
+            "port": "Überschreibt den intern freigegebenen Port (standardmäßig verwendet Auto-Proxy den zuerst erkannten freigegebenen Port)",
+            "scheme": "Überschreibt das interne Protokoll (standardmäßig HTTP)",
+            "url": "Überschreibt server_name (standardmäßig containername.*)",
+            "authentication": "Aktiviert Authentifizierungsmethoden (Optionen sind Authelia, LDAP und HTTP für einfache HTTP-Authentifizierung)"
+        }
+    }
+}

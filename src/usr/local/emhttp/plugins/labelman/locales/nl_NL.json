@@ -1,0 +1,41 @@
+{
+    "container": "Container",
+    "enabled": "Ingeschakeld",
+    "yes": "Ja",
+    "no": "Nee",
+    "edit": "Bewerken",
+    "actions": "Acties",
+    "reset_filters": "Filters resetten",
+    "save_settings": "Instellingen Opslaan",
+    "apply": "Toepassen",
+    "back": "Terug",
+    "name": "Naam",
+    "container_port": "Containerpoort",
+    "tsdproxy": {
+        "ephemeral": "Ephemeral",
+        "funnel": "Trechter",
+        "scheme": "Schema",
+        "tls_validate": "TLS valideren",
+        "help": {
+            "name": "De naam die moet worden gebruikt voor de nieuwe Tailscale-machine. Indien leeg gelaten, wordt de containernaam gebruikt.",
+            "port": "De poort op de container om te proxien. Laat op standaard (0) staan om de juiste poort automatisch te detecteren. Dit is meestal alleen nodig wanneer een container meerdere poorten publiceert.",
+            "ephemeral": "Maak de Tailscale-node tijdelijk. Dit moet meestal op false staan; wijzig dit alleen als u precies weet wat u doet.",
+            "funnel": "Sta verbindingen vanaf het internet toe met de gepubliceerde dienst.",
+            "scheme": "Schakel over naar HTTPS voor containers die HTTPS-eindpunten publiceren in plaats van HTTP.",
+            "tls_validate": "Valideer TLS-certificaat. Alleen van toepassing wanneer schema is ingesteld op HTTPS."
+        }
+    },
+    "swag": {
+        "name_ip": "Containernaam of IP-adres",
+        "scheme": "Protocol",
+        "url": "URL",
+        "authentication": "Authenticatie",
+        "help": {
+            "name_ip": "Overschrijft het adres van de upstream-app. Kan worden ingesteld op een IP-adres of een DNS-hostnaam. Standaard is de containernaam.",
+            "port": "Overschrijft de intern geopenbaarde poort (standaard zal auto-proxy de eerste gevonden poort gebruiken)",
+            "scheme": "Overschrijft het interne protocol (standaard is HTTP)",
+            "url": "Overschrijft server_name (standaard is containernaam.*)",
+            "authentication": "Schakelt authenticatiemethoden in (opties zijn Authelia, LDAP en HTTP voor basis-HTTP-authenticatie)"
+        }
+    }
+}

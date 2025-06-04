@@ -1,0 +1,41 @@
+{
+    "container": "容器",
+    "enabled": "已启用",
+    "yes": "是",
+    "no": "否",
+    "edit": "编辑",
+    "actions": "操作",
+    "reset_filters": "重置筛选器",
+    "save_settings": "保存设置",
+    "apply": "应用",
+    "back": "返回",
+    "name": "名称",
+    "container_port": "容器端口",
+    "tsdproxy": {
+        "ephemeral": "临时",
+        "funnel": "漏斗",
+        "scheme": "方案",
+        "tls_validate": "TLS 验证",
+        "help": {
+            "name": "用于新 Tailscale 设备的名称。如果留空，将使用容器名称。",
+            "port": "要代理的容器端口。保留默认值（0）以自动检测正确的端口。通常只有在容器公开多个端口时才需要更改。",
+            "ephemeral": "将该 Tailscale 节点设置为临时节点。通常应为 false，只有在确定要修改时才更改。",
+            "funnel": "允许来自互联网的连接访问已发布的服务。",
+            "scheme": "对于发布 HTTPS 端点而非 HTTP 的容器，切换到 HTTPS。",
+            "tls_validate": "验证 TLS 证书。仅在方案设置为 HTTPS 时适用。"
+        }
+    },
+    "swag": {
+        "name_ip": "容器名称或 IP 地址",
+        "scheme": "方案",
+        "url": "URL",
+        "authentication": "认证",
+        "help": {
+            "name_ip": "覆盖上游应用地址。可以设置为 IP 或 DNS 主机名。默认为容器名称。",
+            "port": "覆盖内部暴露端口（默认情况下，自动代理将使用检测到的第一个暴露端口）",
+            "scheme": "覆盖内部协议（默认为 HTTP）",
+            "url": "覆盖 server_name（默认为 containername.*）",
+            "authentication": "启用认证方法（可选项为 Authelia、LDAP 和 HTTP 基本认证）"
+        }
+    }
+}

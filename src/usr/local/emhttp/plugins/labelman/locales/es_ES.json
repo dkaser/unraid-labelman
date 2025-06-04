@@ -1,0 +1,41 @@
+{
+    "container": "Contenedor",
+    "enabled": "Activado",
+    "yes": "Sí",
+    "no": "No",
+    "edit": "Editar",
+    "actions": "Acciones",
+    "reset_filters": "Restablecer filtros",
+    "save_settings": "Guardar configuración",
+    "apply": "Aplicar",
+    "back": "Atrás",
+    "name": "Nombre",
+    "container_port": "Puerto del contenedor",
+    "tsdproxy": {
+        "ephemeral": "Efímero",
+        "funnel": "Embudo",
+        "scheme": "Esquema",
+        "tls_validate": "Validar TLS",
+        "help": {
+            "name": "El nombre que se usará para la nueva máquina Tailscale. Si se deja en blanco, se usará el nombre del contenedor.",
+            "port": "El puerto en el contenedor para el proxy. Déjalo en el valor predeterminado (0) para autodetectar el puerto correcto. Normalmente esto solo es necesario cuando un contenedor publica múltiples puertos.",
+            "ephemeral": "Haz que el nodo de Tailscale sea efímero. Normalmente debe ser falso; solo cámbialo si sabes lo que estás haciendo.",
+            "funnel": "Permitir conexiones desde internet al servicio publicado.",
+            "scheme": "Cambie a HTTPS para los contenedores que publiquen puntos finales HTTPS en lugar de HTTP.",
+            "tls_validate": "Validar el certificado TLS. Solo aplicable cuando el esquema está configurado como HTTPS."
+        }
+    },
+    "swag": {
+        "name_ip": "Nombre del Contenedor o Dirección IP",
+        "scheme": "Esquema",
+        "url": "URL",
+        "authentication": "Autenticación",
+        "help": {
+            "name_ip": "Anula la dirección de la aplicación upstream. Se puede establecer como una IP o como un nombre de host DNS. Por defecto se usará el nombre del contenedor.",
+            "port": "Reemplaza el puerto interno expuesto (por defecto, el proxy automático usará el primer puerto expuesto detectado)",
+            "scheme": "Reemplaza el protocolo interno (el valor predeterminado es HTTP)",
+            "url": "Reemplaza el server_name (predeterminado: containername.*)",
+            "authentication": "Habilita métodos de autenticación (las opciones son Authelia, LDAP y HTTP para la autenticación HTTP básica)"
+        }
+    }
+}

@@ -1,0 +1,41 @@
+{
+    "container": "Beholder",
+    "enabled": "Aktivert",
+    "yes": "Ja",
+    "no": "Nei",
+    "edit": "Rediger",
+    "actions": "Handlinger",
+    "reset_filters": "Tilbakestill filtre",
+    "save_settings": "Lagre innstillinger",
+    "apply": "Bruk",
+    "back": "Tilbake",
+    "name": "Navn",
+    "container_port": "Beholderport",
+    "tsdproxy": {
+        "ephemeral": "Ephemeral",
+        "funnel": "Trakt",
+        "scheme": "Skjema",
+        "tls_validate": "TLS-validering",
+        "help": {
+            "name": "Navnet som skal brukes for den nye Tailscale-maskinen. Hvis feltet står tomt, brukes container-navnet.",
+            "port": "Porten på beholderen som skal proxies. La stå på standard (0) for å autodetektere riktig port. Dette er vanligvis kun nødvendig når en beholder publiserer flere porter.",
+            "ephemeral": "Gjør Tailscale-noden ephemeral. Bør vanligvis være false, endre kun hvis du vet hva du gjør.",
+            "funnel": "Tillat tilkoblinger fra internett til den publiserte tjenesten.",
+            "scheme": "Bytt til HTTPS for containere som publiserer HTTPS-endepunkter i stedet for HTTP.",
+            "tls_validate": "Valider TLS-sertifikat. Gjelder bare når skjemaet er satt til HTTPS."
+        }
+    },
+    "swag": {
+        "name_ip": "Container-navn eller IP-adresse",
+        "scheme": "Skjema",
+        "url": "URL",
+        "authentication": "Autentisering",
+        "help": {
+            "name_ip": "Overstyrer adressen til oppstrøms app. Kan angis som en IP eller et DNS-vertsnavn. Standardverdi er container-navn.",
+            "port": "Overstyrer intern eksponert port (som standard vil autoprosy bruke første detekterte eksponerte port)",
+            "scheme": "Overstyrer internt protokoll (standard er HTTP)",
+            "url": "Overstyrer servernavn (standard er containernavn.*)",
+            "authentication": "Aktiverer autentiseringsmetoder (alternativene er Authelia, LDAP og HTTP for grunnleggende HTTP-autentisering)"
+        }
+    }
+}

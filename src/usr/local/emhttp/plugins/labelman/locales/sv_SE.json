@@ -1,0 +1,41 @@
+{
+    "container": "Behållare",
+    "enabled": "Aktiverad",
+    "yes": "Ja",
+    "no": "Nej",
+    "edit": "Redigera",
+    "actions": "Åtgärder",
+    "reset_filters": "Återställ filter",
+    "save_settings": "Spara inställningar",
+    "apply": "Tillämpa",
+    "back": "Tillbaka",
+    "name": "Namn",
+    "container_port": "Behållarport",
+    "tsdproxy": {
+        "ephemeral": "Efemerisk",
+        "funnel": "Tratt",
+        "scheme": "Protokoll",
+        "tls_validate": "TLS-validera",
+        "help": {
+            "name": "Namnet som ska användas för den nya Tailscale-maskinen. Om det lämnas tomt används container-namnet.",
+            "port": "Porten på behållaren som ska proxas. Låt vara på standardvärde (0) för att autodetektera rätt port. Detta behövs oftast endast när en behållare publicerar flera portar.",
+            "ephemeral": "Gör Tailscale-noden efemerisk. Bör oftast vara falskt, ändra bara om du vet vad du gör.",
+            "funnel": "Tillåt anslutningar från internet till den publicerade tjänsten.",
+            "scheme": "Växla till HTTPS för containrar som publicerar HTTPS-slutpunkter istället för HTTP.",
+            "tls_validate": "Validera TLS-certifikat. Gäller endast när schema är inställt på HTTPS."
+        }
+    },
+    "swag": {
+        "name_ip": "Container-namn eller IP-adress",
+        "scheme": "Protokoll",
+        "url": "URL",
+        "authentication": "Autentisering",
+        "help": {
+            "name_ip": "Åsidosätter upstream-appadress. Kan anges som en IP eller ett DNS-värdnamn. Container-namnet används som standard.",
+            "port": "Åsidosätter internt exponerad port (som standard använder auto-proxy den första upptäckta exponerade porten)",
+            "scheme": "Åsidosätter internt protokoll (standard är HTTP)",
+            "url": "Åsidosätter server_name (standard är containername.*)",
+            "authentication": "Aktiverar autentiseringsmetoder (alternativ är Authelia, LDAP och HTTP för grundläggande HTTP-autentisering)"
+        }
+    }
+}

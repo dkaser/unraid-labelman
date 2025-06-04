@@ -1,0 +1,41 @@
+{
+    "container": "컨테이너",
+    "enabled": "활성화됨",
+    "yes": "예",
+    "no": "아니오",
+    "edit": "편집",
+    "actions": "동작",
+    "reset_filters": "필터 재설정",
+    "save_settings": "설정 저장",
+    "apply": "적용",
+    "back": "뒤로",
+    "name": "이름",
+    "container_port": "컨테이너 포트",
+    "tsdproxy": {
+        "ephemeral": "임시",
+        "funnel": "깔때기",
+        "scheme": "스킴",
+        "tls_validate": "TLS 검증",
+        "help": {
+            "name": "새 Tailscale 머신에 사용할 이름입니다. 비워두면 컨테이너 이름이 사용됩니다.",
+            "port": "프록시할 컨테이너의 포트입니다. 기본값(0)으로 두면 올바른 포트를 자동으로 감지합니다. 일반적으로 컨테이너에서 여러 포트를 게시할 때만 필요합니다.",
+            "ephemeral": "Tailscale 노드를 임시로 만듭니다. 보통은 false로 두는 것이 좋으며, 어떤 작업을 하는지 알고 있을 때만 변경하세요.",
+            "funnel": "인터넷에서 게시된 서비스로의 연결을 허용합니다.",
+            "scheme": "HTTP 대신 HTTPS 엔드포인트를 게시하는 컨테이너에 대해 HTTPS로 전환합니다.",
+            "tls_validate": "TLS 인증서를 검증합니다. 스킴이 HTTPS로 설정된 경우에만 적용됩니다."
+        }
+    },
+    "swag": {
+        "name_ip": "컨테이너 이름 또는 IP 주소",
+        "scheme": "스킴",
+        "url": "URL",
+        "authentication": "인증",
+        "help": {
+            "name_ip": "업스트림 앱 주소를 재정의합니다. IP 또는 DNS 호스트 이름으로 설정할 수 있습니다. 기본값은 컨테이너 이름입니다.",
+            "port": "내부 노출 포트를 재정의합니다(기본적으로 자동 프록시는 첫 번째로 감지된 노출 포트를 사용함).",
+            "scheme": "내부 프로토콜을 재정의합니다(기본값은 HTTP).",
+            "url": "server_name을 재정의합니다(기본값은 containername.*).",
+            "authentication": "인증 방법을 활성화합니다(Authelia, LDAP 및 기본 HTTP 인증을 위한 HTTP 옵션 제공)."
+        }
+    }
+}

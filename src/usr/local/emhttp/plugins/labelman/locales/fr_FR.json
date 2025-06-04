@@ -1,0 +1,41 @@
+{
+    "container": "Conteneur",
+    "enabled": "Activé",
+    "yes": "Oui",
+    "no": "Non",
+    "edit": "Modifier",
+    "actions": "Actions",
+    "reset_filters": "Réinitialiser les filtres",
+    "save_settings": "Sauvegarde des Paramètres",
+    "apply": "Appliquer",
+    "back": "Retour",
+    "name": "Nom",
+    "container_port": "Port du conteneur",
+    "tsdproxy": {
+        "ephemeral": "Éphémère",
+        "funnel": "Tunnel",
+        "scheme": "Schéma",
+        "tls_validate": "Validation TLS",
+        "help": {
+            "name": "Le nom à utiliser pour la nouvelle machine Tailscale. S'il est laissé vide, le nom du conteneur sera utilisé.",
+            "port": "Le port sur le conteneur à utiliser pour le proxy. Laissez la valeur par défaut (0) pour détecter automatiquement le port correct. Ceci n'est généralement nécessaire que lorsqu'un conteneur publie plusieurs ports.",
+            "ephemeral": "Rendre le nœud Tailscale éphémère. Il doit généralement rester sur faux ; ne le modifiez que si vous savez ce que vous faites.",
+            "funnel": "Autoriser les connexions Internet vers le service publié.",
+            "scheme": "Basculer vers HTTPS pour les conteneurs qui publient des points de terminaison HTTPS au lieu de HTTP.",
+            "tls_validate": "Valider le certificat TLS. Applicable uniquement si le schéma est défini sur HTTPS."
+        }
+    },
+    "swag": {
+        "name_ip": "Nom du conteneur ou adresse IP",
+        "scheme": "Schéma",
+        "url": "URL",
+        "authentication": "Authentification",
+        "help": {
+            "name_ip": "Remplace l'adresse de l'application en amont. Peut être définie sur une adresse IP ou un nom d'hôte DNS. Par défaut, le nom du conteneur est utilisé.",
+            "port": "Remplace le port exposé interne (par défaut, l’auto-proxy utilisera le premier port exposé détecté)",
+            "scheme": "Remplace le protocole interne (défaut : HTTP)",
+            "url": "Remplace le server_name (défaut : nom_du_conteneur.*)",
+            "authentication": "Active les méthodes d'authentification (les options sont Authelia, LDAP et HTTP pour l'authentification HTTP de base)"
+        }
+    }
+}

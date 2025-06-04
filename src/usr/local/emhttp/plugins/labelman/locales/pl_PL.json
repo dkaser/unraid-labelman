@@ -1,0 +1,41 @@
+{
+    "container": "Kontener",
+    "enabled": "Włączone",
+    "yes": "Tak",
+    "no": "Nie",
+    "edit": "Edytuj",
+    "actions": "Akcje",
+    "reset_filters": "Resetuj filtry",
+    "save_settings": "Zapisz ustawienia",
+    "apply": "Zastosuj",
+    "back": "Wstecz",
+    "name": "Nazwa",
+    "container_port": "Port kontenera",
+    "tsdproxy": {
+        "ephemeral": "Efemeryczny",
+        "funnel": "Lejek",
+        "scheme": "Schemat",
+        "tls_validate": "Weryfikacja TLS",
+        "help": {
+            "name": "Nazwa do użycia dla nowej maszyny Tailscale. Jeśli pozostawisz puste, zostanie użyta nazwa kontenera.",
+            "port": "Port na kontenerze do przekierowania przez serwer proxy. Pozostaw domyślną wartość (0), aby automatycznie wykryć właściwy port. Zazwyczaj jest to wymagane tylko wtedy, gdy kontener publikuje wiele portów.",
+            "ephemeral": "Ustaw węzeł Tailscale jako efemeryczny. Zwykle powinien być ustawiony na false, zmieniaj tylko jeśli wiesz, co robisz.",
+            "funnel": "Zezwalaj na połączenia z internetu do opublikowanej usługi.",
+            "scheme": "Przełącz na HTTPS dla kontenerów udostępniających punkty końcowe HTTPS zamiast HTTP.",
+            "tls_validate": "Weryfikuj certyfikat TLS. Dotyczy tylko, gdy schemat jest ustawiony na HTTPS."
+        }
+    },
+    "swag": {
+        "name_ip": "Nazwa kontenera lub adres IP",
+        "scheme": "Schemat",
+        "url": "URL",
+        "authentication": "Uwierzytelnianie",
+        "help": {
+            "name_ip": "Zastępuje adres aplikacji źródłowej. Można ustawić na adres IP lub nazwę hosta DNS. Domyślnie używana jest nazwa kontenera.",
+            "port": "Nadpisuje wewnętrzny publikowany port (domyślnie auto-proxy użyje pierwszego wykrytego publikowanego portu)",
+            "scheme": "Nadpisuje protokół wewnętrzny (domyślnie HTTP)",
+            "url": "Nadpisuje server_name (domyślnie containername.*)",
+            "authentication": "Włącza metody uwierzytelniania (opcje to Authelia, LDAP oraz HTTP dla podstawowego uwierzytelniania HTTP)"
+        }
+    }
+}

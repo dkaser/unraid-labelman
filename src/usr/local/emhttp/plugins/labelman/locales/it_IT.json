@@ -1,0 +1,41 @@
+{
+    "container": "Contenitore",
+    "enabled": "Abilitato",
+    "yes": "Sì",
+    "no": "No",
+    "edit": "Modifica",
+    "actions": "Azioni",
+    "reset_filters": "Reimposta filtri",
+    "save_settings": "Salva impostazioni",
+    "apply": "Applica",
+    "back": "Indietro",
+    "name": "Nome",
+    "container_port": "Porta del contenitore",
+    "tsdproxy": {
+        "ephemeral": "Efemero",
+        "funnel": "Funnel",
+        "scheme": "Schema",
+        "tls_validate": "Convalida TLS",
+        "help": {
+            "name": "Il nome da utilizzare per la nuova macchina Tailscale. Se lasciato vuoto, verrà utilizzato il nome del container.",
+            "port": "La porta del contenitore da mettere dietro proxy. Lasciare il valore predefinito (0) per rilevare automaticamente la porta corretta. Questo di solito è necessario solo quando un contenitore pubblica più porte.",
+            "ephemeral": "Rendi il nodo Tailscale efemero. Solitamente dovrebbe essere impostato su falso, cambiare solo se sai quello che stai facendo.",
+            "funnel": "Consenti connessioni da Internet al servizio pubblicato.",
+            "scheme": "Passa a HTTPS per i container che espongono endpoint HTTPS invece di HTTP.",
+            "tls_validate": "Convalida il certificato TLS. Applicabile solo quando lo schema è impostato su HTTPS."
+        }
+    },
+    "swag": {
+        "name_ip": "Nome del container o indirizzo IP",
+        "scheme": "Schema",
+        "url": "URL",
+        "authentication": "Autenticazione",
+        "help": {
+            "name_ip": "Sostituisce l'indirizzo dell'applicazione a monte. Può essere impostato su un IP o su un hostname DNS. Di default, viene utilizzato il nome del container.",
+            "port": "Sovrascrive la porta esposta interna (per impostazione predefinita, l'auto-proxy utilizzerà la prima porta esposta rilevata)",
+            "scheme": "Sovrascrive il protocollo interno (default: HTTP)",
+            "url": "Sovrascrive server_name (predefinito: containername.*)",
+            "authentication": "Abilita i metodi di autenticazione (le opzioni sono Authelia, LDAP e HTTP per l'autenticazione HTTP di base)"
+        }
+    }
+}

@@ -1,0 +1,41 @@
+{
+    "container": "コンテナ",
+    "enabled": "有効",
+    "yes": "はい",
+    "no": "いいえ",
+    "edit": "編集",
+    "actions": "操作",
+    "reset_filters": "フィルターをリセット",
+    "save_settings": "設定を保存",
+    "apply": "適用",
+    "back": "戻る",
+    "name": "名前",
+    "container_port": "コンテナポート",
+    "tsdproxy": {
+        "ephemeral": "一時的",
+        "funnel": "ファネル",
+        "scheme": "スキーム",
+        "tls_validate": "TLS検証",
+        "help": {
+            "name": "新しいTailscaleマシンに使用する名前です。空欄の場合、コンテナ名が使用されます。",
+            "port": "プロキシするコンテナのポート。デフォルト（0）のままにすると、正しいポートが自動検出されます。これは通常、コンテナが複数のポートを公開している場合のみ必要です。",
+            "ephemeral": "Tailscale ノードを一時的にします。通常は false のままにしてください。本当に必要な場合のみ変更してください。",
+            "funnel": "インターネットから公開サービスへの接続を許可します。",
+            "scheme": "HTTPの代わりにHTTPSエンドポイントを公開しているコンテナにはHTTPSに切り替わります。",
+            "tls_validate": "TLS証明書を検証します。スキームがHTTPSに設定されている場合のみ有効です。"
+        }
+    },
+    "swag": {
+        "name_ip": "コンテナ名またはIPアドレス",
+        "scheme": "スキーム",
+        "url": "URL",
+        "authentication": "認証",
+        "help": {
+            "name_ip": "上流アプリケーションアドレスを上書きします。IPまたはDNSホスト名を設定できます。デフォルトはコンテナ名です。",
+            "port": "内部公開ポートを上書きします（デフォルトでは、自動プロキシは最初に検出された公開ポートを使用します）",
+            "scheme": "内部プロトコルを上書きします（デフォルトは HTTP）",
+            "url": "server_name を上書きします（デフォルトは containername.*）",
+            "authentication": "認証方法を有効にします（オプションはAuthelia、LDAP、および基本HTTP認証用のHTTPです）"
+        }
+    }
+}

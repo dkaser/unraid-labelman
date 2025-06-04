@@ -1,0 +1,41 @@
+{
+    "container": "Contêiner",
+    "enabled": "Ativado",
+    "yes": "Sim",
+    "no": "Não",
+    "edit": "Editar",
+    "actions": "Ações",
+    "reset_filters": "Redefinir filtros",
+    "save_settings": "Salvar Configurações",
+    "apply": "Aplicar",
+    "back": "Voltar",
+    "name": "Nome",
+    "container_port": "Porta do Contêiner",
+    "tsdproxy": {
+        "ephemeral": "Efêmero",
+        "funnel": "Funil",
+        "scheme": "Esquema",
+        "tls_validate": "Validar TLS",
+        "help": {
+            "name": "O nome a ser usado para a nova máquina Tailscale. Se deixado em branco, será usado o nome do contêiner.",
+            "port": "A porta no contêiner para fazer o proxy. Deixe o padrão (0) para detectar automaticamente a porta correta. Isso normalmente só é necessário quando um contêiner publica várias portas.",
+            "ephemeral": "Torne o nó do Tailscale efêmero. Normalmente deve ser falso, altere apenas se você souber o que está fazendo.",
+            "funnel": "Permitir conexões da internet para o serviço publicado.",
+            "scheme": "Alterna para HTTPS para contêineres que publicam endpoints HTTPS em vez de HTTP.",
+            "tls_validate": "Validar certificado TLS. Somente aplicável quando o esquema for definido como HTTPS."
+        }
+    },
+    "swag": {
+        "name_ip": "Nome ou Endereço IP do Contêiner",
+        "scheme": "Esquema",
+        "url": "URL",
+        "authentication": "Autenticação",
+        "help": {
+            "name_ip": "Substitui o endereço do aplicativo upstream. Pode ser definido como um IP ou um nome de host DNS. O padrão é o nome do contêiner.",
+            "port": "Substitui a porta exposta interna (por padrão, o proxy automático usará a primeira porta exposta detectada)",
+            "scheme": "Substitui o protocolo interno (padrão HTTP)",
+            "url": "Substitui o server_name (padrão: nome_do_contêiner.*)",
+            "authentication": "Habilita métodos de autenticação (as opções são Authelia, LDAP e HTTP para autenticação HTTP básica)"
+        }
+    }
+}
