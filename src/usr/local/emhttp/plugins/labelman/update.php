@@ -1,6 +1,6 @@
 <?php
 
-namespace Labelman;
+namespace EDACerton\Labelman;
 
 /*
     Copyright (C) 2025  Derek Kaser
@@ -22,6 +22,11 @@ namespace Labelman;
 $docroot = $docroot ?? $_SERVER['DOCUMENT_ROOT'] ?: '/usr/local/emhttp';
 require_once "{$docroot}/plugins/labelman/include/common.php";
 
+if ( ! defined(__NAMESPACE__ . '\PLUGIN_ROOT') || ! defined(__NAMESPACE__ . '\PLUGIN_NAME')) {
+    throw new \RuntimeException("Common file not loaded.");
+}
+$utils = new Utils(PLUGIN_NAME);
+
 ob_implicit_flush(true);
 readfile('/usr/local/emhttp/update.htm');
 ob_implicit_flush(false);
@@ -31,7 +36,10 @@ if ( ! isset($_POST['containerName'])) {
 }
 
 $containerName = $_POST['containerName'];
-$configFile    = realpath("/boot/config/plugins/dockerMan/templates-user/my-{$containerName}.xml");
+if ( ! is_string($containerName)) {
+    throw new \Exception("Invalid container name");
+}
+$configFile = realpath("/boot/config/plugins/dockerMan/templates-user/my-{$containerName}.xml");
 if ( ! $configFile || ! str_starts_with($configFile, "/boot/config/plugins/dockerMan/templates-user/my-")) {
     throw new \Exception("Bad Request");
 }
@@ -44,7 +52,7 @@ try {
         $container->Services[$service]->update($container->config, $_POST);
     }
 } catch (\Throwable $e) {
-    Utils::logmsg("Error updating {$service}: {$e->getMessage()}");
+    $utils->logmsg("Error updating {$service}: {$e->getMessage()}");
 }
 
 $xml = $container->config->asXML();

@@ -1,6 +1,6 @@
 <?php
 
-namespace Labelman;
+namespace EDACerton\Labelman;
 
 /*
     Copyright (C) 2025  Derek Kaser

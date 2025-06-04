@@ -27,9 +27,9 @@ try {
     require_once "{$docroot}/plugins/labelman/include/page.php";
 
     if (isset($_GET['container'])) {
-        echo Labelman\getPage("Container");
+        echo EDACerton\Labelman\getPage("Container");
     } else {
-        echo Labelman\getPage("Main");
+        echo EDACerton\Labelman\getPage("Main");
     }
 } catch (Throwable $e) {
     echo "An error occurred: <pre>" . print_r($e, true) . "</pre>";

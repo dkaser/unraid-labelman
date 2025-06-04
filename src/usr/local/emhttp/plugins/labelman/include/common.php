@@ -1,6 +1,6 @@
 <?php
 
-namespace Labelman;
+namespace EDACerton\Labelman;
 
 /*
     Copyright (C) 2025  Derek Kaser
@@ -19,10 +19,8 @@ namespace Labelman;
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-foreach (glob("/usr/local/emhttp/plugins/labelman/include/Labelman/*.php") ?: array() as $file) {
-    try {
-        require $file;
-    } catch (\Throwable $e) {
-        Utils::logmsg("Caught exception in {$file} : " . $e->getMessage());
-    }
-}
+define(__NAMESPACE__ . "\PLUGIN_ROOT", dirname(dirname(__FILE__)));
+define(__NAMESPACE__ . "\PLUGIN_NAME", "labelman");
+
+// @phpstan-ignore requireOnce.fileNotFound
+require_once "/usr/local/php/unraid-labelman/vendor/autoload.php";

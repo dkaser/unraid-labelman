@@ -1,6 +1,6 @@
 <?php
 
-namespace Labelman;
+namespace EDACerton\Labelman;
 
 /*
     Copyright (C) 2025  Derek Kaser
@@ -22,12 +22,20 @@ namespace Labelman;
 $docroot = $docroot ?? $_SERVER['DOCUMENT_ROOT'] ?: '/usr/local/emhttp';
 require_once "{$docroot}/plugins/labelman/include/common.php";
 
+if ( ! defined(__NAMESPACE__ . '\PLUGIN_ROOT') || ! defined(__NAMESPACE__ . '\PLUGIN_NAME')) {
+    throw new \RuntimeException("Common file not loaded.");
+}
+$utils = new Utils(PLUGIN_NAME);
+
 if ( ! isset($_GET['container'])) {
     throw new \Exception("No container specified");
 }
 
 $containerName = $_GET['container'];
-$configFile    = realpath("/boot/config/plugins/dockerMan/templates-user/my-{$containerName}.xml");
+if ( ! is_string($containerName)) {
+    throw new \Exception("Invalid container name");
+}
+$configFile = realpath("/boot/config/plugins/dockerMan/templates-user/my-{$containerName}.xml");
 if ( ! $configFile || ! str_starts_with($configFile, "/boot/config/plugins/dockerMan/templates-user/my-")) {
     throw new \Exception("Bad Request");
 }
@@ -54,7 +62,7 @@ foreach ($services as $service) {
             $container->Services[$service]->display($container);
         }
     } catch (\Throwable $e) {
-        Utils::logmsg("Error displaying {$service}: {$e->getMessage()}");
+        $utils->logmsg("Error displaying {$service}: {$e->getMessage()}");
         ob_clean();
     }
     ob_end_flush();

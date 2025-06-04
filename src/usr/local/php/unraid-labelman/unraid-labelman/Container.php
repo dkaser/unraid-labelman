@@ -1,6 +1,6 @@
 <?php
 
-namespace Labelman;
+namespace EDACerton\Labelman;
 
 /*
     Copyright (C) 2025  Derek Kaser
@@ -31,6 +31,11 @@ class Container
 
     public function __construct(string $configFile)
     {
+        if ( ! defined(__NAMESPACE__ . '\PLUGIN_ROOT') || ! defined(__NAMESPACE__ . '\PLUGIN_NAME')) {
+            throw new \RuntimeException("Common file not loaded.");
+        }
+        $utils = new Utils(PLUGIN_NAME);
+
         if ( ! file_exists($configFile)) {
             throw new \Exception("No config file found for {$configFile}");
         }
@@ -59,10 +64,10 @@ class Container
                 if ($newService instanceof Service) {
                     $this->Services[$service] = $newService;
                 } else {
-                    Utils::logmsg("Service {$service} does not implement Service interface");
+                    $utils->logmsg("Service {$service} does not implement Service interface");
                 }
             } catch (\Throwable $e) {
-                Utils::logmsg("Error loading service {$service}: {$e->getMessage()}");
+                $utils->logmsg("Error loading service {$service}: {$e->getMessage()}");
             }
         }
     }

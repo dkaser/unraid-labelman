@@ -1,6 +1,6 @@
 <?php
 
-namespace Labelman;
+namespace EDACerton\Labelman;
 
 /*
     Copyright (C) 2025  Derek Kaser
@@ -22,6 +22,11 @@ namespace Labelman;
 $docroot = $docroot ?? $_SERVER['DOCUMENT_ROOT'] ?: '/usr/local/emhttp';
 require_once "{$docroot}/plugins/labelman/include/common.php";
 
+if ( ! defined(__NAMESPACE__ . '\PLUGIN_ROOT') || ! defined(__NAMESPACE__ . '\PLUGIN_NAME')) {
+    throw new \RuntimeException("Common file not loaded.");
+}
+$utils = new Utils(PLUGIN_NAME);
+
 $sysInfo = new SystemInfo();
 
 /** @var array<string,bool> $serviceEnabled */
@@ -34,7 +39,7 @@ foreach ($services as $k => $service) {
         $serviceEnabled[$service] = $service::serviceExists($sysInfo);
     } catch (\Throwable $e) {
         unset($services[$k]);
-        Utils::logmsg("Error checking if {$service} exists: {$e->getMessage()}");
+        $utils->logmsg("Error checking if {$service} exists: {$e->getMessage()}");
     }
 }
 
@@ -54,7 +59,7 @@ foreach ($services as $k => $service) {
                         }
                     } catch (\Throwable $e) {
                         unset($services[$k]);
-                        Utils::logmsg("Error checking if {$service} exists: {$e->getMessage()}");
+                        $utils->logmsg("Error checking if {$service} exists: {$e->getMessage()}");
                     }
                 }
 ?>
@@ -79,7 +84,7 @@ foreach ($services as $k => $service) {
                             $row .= "<td>" . ($container->Services[$service]->isEnabled() ? "Yes" : "No") . "</td>";
                         }
                     } catch (\Throwable $e) {
-                        Utils::logmsg("Error checking if {$service} enabled: {$e->getMessage()}");
+                        $utils->logmsg("Error checking if {$service} enabled: {$e->getMessage()}");
                         $row .= "<td>Unknown</td>";
                     }
                 }
