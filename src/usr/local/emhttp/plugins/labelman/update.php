@@ -69,5 +69,5 @@ if ($xml) {
     // Write config file
     file_put_contents($configFile, $dom->saveXML());
 
-    Utils::run_command("/usr/local/emhttp/plugins/dynamix.docker.manager/scripts/rebuild_container '{$containerName}'");
+    $utils->run_command("/usr/local/emhttp/plugins/dynamix.docker.manager/scripts/rebuild_container '{$containerName}'");
 }

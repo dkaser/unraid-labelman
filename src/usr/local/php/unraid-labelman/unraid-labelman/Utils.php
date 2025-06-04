@@ -32,30 +32,6 @@ class Utils extends \EDACerton\PluginUtils\Utils
         ];
     }
 
-    /**
-     * @return array<string>
-     */
-    public static function run_command(string $command, bool $alwaysShow = false, bool $show = true): array
-    {
-        if ( ! defined(__NAMESPACE__ . '\PLUGIN_ROOT') || ! defined(__NAMESPACE__ . '\PLUGIN_NAME')) {
-            throw new \RuntimeException("Common file not loaded.");
-        }
-        $utils = new Utils(PLUGIN_NAME);
-
-        $output = array();
-        $retval = null;
-        if ($show) {
-            $utils->logmsg("exec: {$command}");
-        }
-        exec("{$command} 2>&1", $output, $retval);
-
-        if (($retval != 0) || $alwaysShow) {
-            $utils->logmsg("Command returned {$retval}" . PHP_EOL . implode(PHP_EOL, $output));
-        }
-
-        return $output;
-    }
-
     public static function apply_label(\SimpleXMLElement &$config, string $label, string $value, string $default = ""): void
     {
         $remove = $value == $default;

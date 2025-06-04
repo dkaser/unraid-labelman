@@ -27,26 +27,33 @@ class SystemInfo
     /** @var array<string> $ManagedContainers */
     public array $ManagedContainers;
 
+    private Utils $utils;
+
     public function __construct()
     {
-        $this->Images            = self::getImages();
-        $this->ManagedContainers = self::getManagedContainers();
+        if ( ! defined(__NAMESPACE__ . '\PLUGIN_ROOT') || ! defined(__NAMESPACE__ . '\PLUGIN_NAME')) {
+            throw new \RuntimeException("Common file not loaded.");
+        }
+        $this->utils = new Utils(PLUGIN_NAME);
+
+        $this->Images            = $this->getImages();
+        $this->ManagedContainers = $this->getManagedContainers();
     }
 
     /**
      * @return array<string>
      */
-    private static function getImages(): array
+    private function getImages(): array
     {
-        return Utils::run_command('docker container ls --format="{{.Image}}"');
+        return $this->utils->run_command('docker container ls --format="{{.Image}}"');
     }
 
     /**
      * @return array<string>
      */
-    private static function getManagedContainers(): array
+    private function getManagedContainers(): array
     {
-        $containers = Utils::run_command('docker container ls --format="{{.Names}}" --filter "label=net.unraid.docker.managed=dockerman"');
+        $containers = $this->utils->run_command('docker container ls --format="{{.Names}}" --filter "label=net.unraid.docker.managed=dockerman"');
         sort($containers, SORT_STRING | SORT_FLAG_CASE);
 
         return $containers;
