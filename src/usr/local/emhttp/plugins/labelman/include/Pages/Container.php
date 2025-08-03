@@ -77,7 +77,7 @@ foreach ($services as $service) {
 <dl>
     <dt>&nbsp;</dt>
     <dd>
-        <input type="submit" name="#apply" value="<?= $tr->tr("apply"); ?>"><input type="button" id="DONE" value="<?= $tr->tr("back"); ?>" onclick="window.location.href='/Settings/Labelman'">
+        <span><input type="submit" name="#apply" value="<?= $tr->tr("apply"); ?>"><input type="button" id="DONE" value="<?= $tr->tr("back"); ?>" onclick="window.location.href='/Settings/Labelman'"></span>
     </dd>
 </dl>
 </form>

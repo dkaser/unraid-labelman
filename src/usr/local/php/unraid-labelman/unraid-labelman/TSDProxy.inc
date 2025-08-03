@@ -18,24 +18,19 @@ use EDACerton\PluginUtils\Translator;
     GNU General Public License for more details.
 
     You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <https://www.gnu.org/licenses/>.
-*/
-
-if ( ! isset($this)) {
+    along with this program.  If not, see <https://www.gnu.org/licenses/>. */ if ( ! isset($this)) {
     throw new \Exception("TSDProxy.inc called outside class");
 }
-
-if ( ! defined(__NAMESPACE__ . '\PLUGIN_ROOT') || ! defined(__NAMESPACE__ . '\PLUGIN_NAME')) {
+if ( ! defined(__NAMESPACE__ . '\PLUGIN_ROOT') || ! defined(__NAMESPACE__ .
+'\PLUGIN_NAME')) {
     throw new \RuntimeException("Common file not loaded.");
-}
-
-$tr = $tr ?? new Translator(PLUGIN_ROOT);
-?>
+} $tr
+ = $tr ?? new Translator(PLUGIN_ROOT); ?>
 
 <dl>
   <dt><?= $tr->tr("enabled"); ?></dt>
   <dd>
-    <select name="TSDProxy_enable" size="1">
+    <select name="TSDProxy_enable" size="1" class="narrow">
       <?= Utils::make_option($this->enable, 'true', $tr->tr("yes"));?>
       <?= Utils::make_option( ! $this->enable, 'false', $tr->tr("no"));?>
     </select>
@@ -81,7 +76,7 @@ $tr = $tr ?? new Translator(PLUGIN_ROOT);
   <dl>
     <dt><?= $tr->tr("tsdproxy.ephemeral"); ?></dt>
     <dd>
-      <select name="TSDProxy_ephemeral" size="1">
+      <select name="TSDProxy_ephemeral" size="1" class="narrow">
         <?= Utils::make_option($this->ephemeral, 'true', $tr->tr("yes"));?>
         <?= Utils::make_option( ! $this->ephemeral, 'false', $tr->tr("no"));?>
       </select>
@@ -94,7 +89,7 @@ $tr = $tr ?? new Translator(PLUGIN_ROOT);
   <dl>
     <dt><?= $tr->tr("tsdproxy.funnel"); ?></dt>
     <dd>
-      <select name="TSDProxy_funnel" size="1">
+      <select name="TSDProxy_funnel" size="1" class="narrow">
         <?= Utils::make_option($this->funnel, 'true', $tr->tr("yes"));?>
         <?= Utils::make_option( ! $this->funnel, 'false', $tr->tr("no"));?>
       </select>
@@ -107,7 +102,7 @@ $tr = $tr ?? new Translator(PLUGIN_ROOT);
   <dl>
     <dt><?= $tr->tr("tsdproxy.scheme"); ?></dt>
     <dd>
-      <select name="TSDProxy_scheme" size="1">
+      <select name="TSDProxy_scheme" size="1" class="narrow">
         <?= Utils::make_option($this->scheme == "http", 'http', "HTTP");?>
         <?= Utils::make_option($this->scheme == "https", 'https', "HTTPS");?>
       </select>
@@ -120,7 +115,7 @@ $tr = $tr ?? new Translator(PLUGIN_ROOT);
   <dl>
     <dt><?= $tr->tr("tsdproxy.tls_validate"); ?></dt>
     <dd>
-      <select name="TSDProxy_tlsvalidate" size="1">
+      <select name="TSDProxy_tlsvalidate" size="1" class="narrow">
         <?= Utils::make_option($this->tlsvalidate, 'true', $tr->tr("yes"));?>
         <?= Utils::make_option( ! $this->tlsvalidate, 'false', $tr->tr("no"));?>
       </select>
