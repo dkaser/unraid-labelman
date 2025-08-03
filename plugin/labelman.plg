@@ -4,7 +4,7 @@
 <PLUGIN 
   name="labelman"
   author="Derek Kaser"
-  version="2025.01.15"
+  version="2025.08.03"
   pluginURL="https://raw.githubusercontent.com/dkaser/unraid-labelman/main/plugin/labelman.plg"
   support="https://forums.unraid.net/topic/184701-plugin-label-manager/"
   min="6.12.0"
@@ -13,24 +13,16 @@
 
 <CHANGES>
 <![CDATA[
-###2025.01.15###
-## What's Changed
-* feat: add support for LSIO SWAG auto-proxy by @tyrelwar in https://github.com/dkaser/unraid-labelman/pull/1
-* fix: display spinner while container updates by @dkaser in https://github.com/dkaser/unraid-labelman/pull/2
-* fix: don't display service if error occurs by @dkaser in https://github.com/dkaser/unraid-labelman/pull/3
-
-## New Contributors
-* @tyrelwar made their first contribution in https://github.com/dkaser/unraid-labelman/pull/1
-
-**Full Changelog**: https://github.com/dkaser/unraid-labelman/compare/2025.01.13...2025.01.15
+###2025.08.03###
+* fix: style for Unraid 7.2
 
 For older releases, see https://github.com/dkaser/unraid-labelman/releases
 ]]>
 </CHANGES>
 
-<FILE Name="/boot/config/plugins/labelman/unraid-labelman-2025.01.15-noarch-1.txz">
-<URL>https://github.com/dkaser/unraid-labelman/releases/download/2025.01.15/unraid-labelman-2025.01.15-noarch-1.txz</URL>
-<SHA256>1c2619ffc79b1ee98d2582adf9e5f34f1678f05e092d88607fe063037b257295</SHA256>
+<FILE Name="/boot/config/plugins/labelman/unraid-labelman-2025.08.03-noarch-1.txz">
+<URL>https://github.com/dkaser/unraid-labelman/releases/download/2025.08.03/unraid-labelman-2025.08.03-noarch-1.txz</URL>
+<SHA256>027021f87618bd2c2a9595331b6a63e645ddb91f91d3a476b2a88f89ac77fd11</SHA256>
 </FILE>
 
 <!--
@@ -39,15 +31,15 @@ The 'install' script.
 <FILE Run="/bin/bash">
 <INLINE>
 <![CDATA[
-upgradepkg --install-new /boot/config/plugins/labelman/unraid-labelman-2025.01.15-noarch-1.txz
+upgradepkg --install-new /boot/config/plugins/labelman/unraid-labelman-2025.08.03-noarch-1.txz
 
 # cleanup old versions
-rm -f $(ls /boot/config/plugins/labelman/unraid-labelman-*.txz 2>/dev/null | grep -v '2025.01.15')
+rm -f $(ls /boot/config/plugins/labelman/unraid-labelman-*.txz 2>/dev/null | grep -v '2025.08.03')
 
 echo ""
 echo "----------------------------------------------------"
 echo " labelman has been installed."
-echo " Version: 2025.01.15"
+echo " Version: 2025.08.03"
 echo "----------------------------------------------------"
 echo ""
 ]]>
