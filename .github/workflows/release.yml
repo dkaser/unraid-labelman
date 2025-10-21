@@ -3,7 +3,7 @@ on:
     types:
       - prereleased
       - released
-      - published
+
 env:
   FILE_NAME: unraid-labelman
 
