@@ -4,7 +4,7 @@
 <PLUGIN 
   name="labelman"
   author="Derek Kaser"
-  version="2025.08.03"
+  version="2025.10.21.0216"
   pluginURL="https://raw.githubusercontent.com/dkaser/unraid-labelman/main/plugin/labelman.plg"
   support="https://forums.unraid.net/topic/184701-plugin-label-manager/"
   min="6.12.0"
@@ -13,16 +13,19 @@
 
 <CHANGES>
 <![CDATA[
-###2025.08.03###
-* fix: style for Unraid 7.2
+###2025.10.21.0216###
+### 🐛 Bug Fixes
+
+- Clean up buffer on error ([#6](https://github.com/dkaser/unraid-labelman/pull/6))
+
 
 For older releases, see https://github.com/dkaser/unraid-labelman/releases
 ]]>
 </CHANGES>
 
-<FILE Name="/boot/config/plugins/labelman/unraid-labelman-2025.08.03-noarch-1.txz">
-<URL>https://github.com/dkaser/unraid-labelman/releases/download/2025.08.03/unraid-labelman-2025.08.03-noarch-1.txz</URL>
-<SHA256>027021f87618bd2c2a9595331b6a63e645ddb91f91d3a476b2a88f89ac77fd11</SHA256>
+<FILE Name="/boot/config/plugins/labelman/unraid-labelman-2025.10.21.0216-noarch-1.txz">
+<URL>https://github.com/dkaser/unraid-labelman/releases/download/2025.10.21.0216/unraid-labelman-2025.10.21.0216-noarch-1.txz</URL>
+<SHA256>31a120650d917cd8053326df6aaa42c7058ceaac9ca7c1367f191a9143294cf3</SHA256>
 </FILE>
 
 <!--
@@ -31,15 +34,15 @@ The 'install' script.
 <FILE Run="/bin/bash">
 <INLINE>
 <![CDATA[
-upgradepkg --install-new /boot/config/plugins/labelman/unraid-labelman-2025.08.03-noarch-1.txz
+upgradepkg --install-new /boot/config/plugins/labelman/unraid-labelman-2025.10.21.0216-noarch-1.txz
 
 # cleanup old versions
-rm -f $(ls /boot/config/plugins/labelman/unraid-labelman-*.txz 2>/dev/null | grep -v '2025.08.03')
+rm -f $(ls /boot/config/plugins/labelman/unraid-labelman-*.txz 2>/dev/null | grep -v '2025.10.21.0216')
 
 echo ""
 echo "----------------------------------------------------"
 echo " labelman has been installed."
-echo " Version: 2025.08.03"
+echo " Version: 2025.10.21.0216"
 echo "----------------------------------------------------"
 echo ""
 ]]>
