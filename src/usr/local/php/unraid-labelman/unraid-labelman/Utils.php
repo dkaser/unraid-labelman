@@ -44,7 +44,6 @@ class Utils extends \EDACerton\PluginUtils\Utils
                     if ($remove) {
                         unset($c[0]);
                     } else {
-                        /** @phpstan-ignore offsetAssign.valueType */
                         $c[0] = $value;
                     }
 
