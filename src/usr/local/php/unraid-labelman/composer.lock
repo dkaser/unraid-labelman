@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "90620daae3ce486e253a8bfcdb87c372",
+    "content-hash": "813eda00f88797e46b2509d9478db642",
     "packages": [
         {
             "name": "edacerton/plugin-utils",
@@ -2777,7 +2777,9 @@
     "stability-flags": {},
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": {},
+    "platform": {
+        "php": ">=8.3"
+    },
     "platform-dev": {},
     "plugin-api-version": "2.9.0"
 }
