@@ -123,5 +123,4 @@ $(function() {
 
 </script>
 
-
-
+<?= $utils->getLicenseBlock(); ?>
