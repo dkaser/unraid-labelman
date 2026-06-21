@@ -26,7 +26,7 @@ interface Service
     public function isEnabled(): bool;
 
     /**
-     * @param array<string,mixed> $post
+     * @param array<string,string> $post
      */
     public function update(\SimpleXMLElement &$config, array $post): void;
 
