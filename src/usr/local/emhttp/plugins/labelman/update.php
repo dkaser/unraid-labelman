@@ -47,9 +47,11 @@ if ( ! $configFile || ! str_starts_with($configFile, "/boot/config/plugins/docke
 $container = new Container($configFile);
 
 $services = Utils::getServices();
+/** @var array<string, string> $post */
+$post = $_POST;
 try {
     foreach ($services as $service) {
-        $container->Services[$service]->update($container->config, $_POST);
+        $container->Services[$service]->update($container->config, $post);
     }
 } catch (\Throwable $e) {
     $utils->logmsg("Error updating {$service}: {$e->getMessage()}");
